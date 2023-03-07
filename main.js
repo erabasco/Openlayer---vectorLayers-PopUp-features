@@ -13,7 +13,7 @@ const map = new ol.Map({
 
 const valenciaLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: 'https://apimocha.com/gemot/val',
+        url: 'url.geojson',
         format: new ol.format.GeoJSON(),
     }),
     style: new ol.style.Style({
@@ -30,7 +30,7 @@ const valenciaLayer = new ol.layer.Vector({
 
 const barcelonaLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: "https://apimocha.com/gemot/bcn",
+        url: "url.geojson",
         format: new ol.format.GeoJSON(),
     }),
 });
