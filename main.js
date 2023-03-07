@@ -11,9 +11,9 @@ const map = new ol.Map({
     })
 });
 
-const valenciaLayer = new ol.layer.Vector({
+const ecoLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: 'url.geojson',
+        url: 'https://openlayers.org/data/vector/ecoregions.json',
         format: new ol.format.GeoJSON(),
     }),
     style: new ol.style.Style({
@@ -21,22 +21,22 @@ const valenciaLayer = new ol.layer.Vector({
             color: 'rgba(255, 0, 0, 0.1)',
         }),
         stroke: new ol.style.Stroke({
-            color: 'red',
+            color: 'green',
             width: 2,
         }),
     }),
 });
 
 
-const barcelonaLayer = new ol.layer.Vector({
+const countriesLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: "url.geojson",
+        url: "https://openlayersbook.github.io/openlayers_book_samples/assets/data/countries.geojson",
         format: new ol.format.GeoJSON(),
     }),
 });
 
-map.addLayer(valenciaLayer);
-map.addLayer(barcelonaLayer);
+map.addLayer(ecoLayer);
+map.addLayer(countriesLayer);
 
 
 // Define el popup
@@ -61,15 +61,15 @@ map.on('click', function (evt) {
     const features = [];
 
 
-    // Recorre las características de la capa de Valencia y agrega las que se encuentran en el punto clicado
-    valenciaLayer.getSource().getFeaturesAtCoordinate(evt.coordinate).forEach(function (feature) {
-        feature.set('layerName', 'Valencia'); //guardamos nombre de la capa
+    // Recorre las características de la capa de eco y agrega las que se encuentran en el punto clicado
+    ecoLayer.getSource().getFeaturesAtCoordinate(evt.coordinate).forEach(function (feature) {
+        feature.set('layerName', 'eco'); //guardamos nombre de la capa
         features.push(feature);
     });
 
-    // Recorre las características de la capa de Barcelona y agrega las que se encuentran en el punto clicado
-    barcelonaLayer.getSource().getFeaturesAtCoordinate(evt.coordinate).forEach(function (feature) {
-        feature.set('layerName', 'Barcelona');
+    // Recorre las características de la capa de countries y agrega las que se encuentran en el punto clicado
+    countriesLayer.getSource().getFeaturesAtCoordinate(evt.coordinate).forEach(function (feature) {
+        feature.set('layerName', 'countries');
         features.push(feature);
     });
 
